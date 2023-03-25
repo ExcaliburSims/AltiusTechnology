@@ -32,43 +32,43 @@ const createBoard = (BOARD_SIZE) => {
 
 function GridPage() {
   const [board, setBoard] = useState(createBoard(BOARD_SIZE));
-  const [car, setCar] = useState(new LinkedList(1));
-  const [carCells, setCarCells] = useState(new Set([1]));
-  const [car2, setCar2] = useState(new LinkedList(312));
-  const [car2Cells, setCar2Cells] = useState(new Set([312]));
+  const [carBottom, setCarBottom] = useState(new LinkedList(1));
+  const [carBottomCells, setCarBottomCells] = useState(new Set([1]));
+  const [carUp, setCarUp] = useState(new LinkedList(312));
+  const [carUpCells, setCarUpCells] = useState(new Set([312]));
 
   const moveCar = () => {
-    const newCarCells = new Set(carCells);
-    const newHead = car.head.value + BOARD_SIZE;
+    const newCarCells = new Set(carBottomCells);
+    const newHead = carBottom.head.value + BOARD_SIZE;
 
     if (newHead <= BOARD_SIZE * 52) {
-      newCarCells.delete(car.tail.value);
+      newCarCells.delete(carBottom.tail.value);
       const newHeadNode = new LinkedListNode(newHead);
-      newHeadNode.next = car.head;
-      setCar(new LinkedList(newHead));
+      newHeadNode.next = carBottom.head;
+      setCarBottom(new LinkedList(newHead));
       newCarCells.add(newHead);
-      setCarCells(newCarCells);
+      setCarBottomCells(newCarCells);
     } else {
       const newCar = new LinkedList(1);
-      setCar(newCar);
-      setCarCells(new Set([1]));
+      setCarBottom(newCar);
+      setCarBottomCells(new Set([1]));
     }
   };
   const moveCarUp = () => {
-    const newCar2Cells = new Set(car2Cells);
-    const newHead2 = car2.head.value - BOARD_SIZE;
+    const newCar2Cells = new Set(carUpCells);
+    const newHead2 = carUp.head.value - BOARD_SIZE;
 
     if (newHead2 > 0) {
-      newCar2Cells.delete(car2.tail.value);
+      newCar2Cells.delete(carUp.tail.value);
       const newHeadNode2 = new LinkedListNode(newHead2);
-      newHeadNode2.next = car2.head;
-      setCar2(new LinkedList(newHead2));
+      newHeadNode2.next = carUp.head;
+      setCarUp(new LinkedList(newHead2));
       newCar2Cells.add(newHead2);
-      setCar2Cells(newCar2Cells);
+      setCarUpCells(newCar2Cells);
     } else {
       const newCar2 = new LinkedList(312);
-      setCar2(newCar2);
-      setCar2Cells(new Set([312]));
+      setCarUp(newCar2);
+      setCarUpCells(new Set([312]));
     }
   };
 
@@ -79,7 +79,7 @@ function GridPage() {
       clearInterval(intervalId);
       clearInterval(intervalId2);
     };
-  }, [carCells, car2Cells]);
+  }, [carBottomCells, carUpCells]);
   return (
     <div className="board">
       {board.map((row, rowIdx) => (
@@ -88,9 +88,9 @@ function GridPage() {
             return (
               <div
                 key={cellIdx}
-                className={`cell ${carCells.has(cellValue) ? "car-cell" : ""} ${
-                  car2Cells.has(cellValue) ? "car-cell2" : ""
-                }`}
+                className={`cell ${
+                  carBottomCells.has(cellValue) ? "car-cell" : ""
+                } ${carUpCells.has(cellValue) ? "car-cell2" : ""}`}
               ></div>
             );
           })}
