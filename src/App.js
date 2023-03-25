@@ -1,7 +1,7 @@
-import "./App.css";
+import Grille from "./components/Grille";
 
 function App() {
-  return <div className="App">Salut</div>;
+  return <Grille />;
 }
 
 export default App;
