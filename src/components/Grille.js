@@ -20,7 +20,7 @@ class LinkedList {
 const createBoard = (BOARD_SIZE) => {
   let counter = 1;
   const board = [];
-  for (let row = 0; row < BOARD_SIZE; row++) {
+  for (let row = 0; row < 52; row++) {
     const currentRow = [];
     for (let col = 0; col < BOARD_SIZE; col++) {
       currentRow.push(counter++);
@@ -34,40 +34,12 @@ function GridPage() {
   const [board, setBoard] = useState(createBoard(BOARD_SIZE));
   const [car, setCar] = useState(new LinkedList(1));
   const [carCells, setCarCells] = useState(new Set([1]));
-  /*   function handleKeyDown(event) {
-    const newCarCells = new Set(carCells);
-
-    // Move the car up
-    if (event.key === "ArrowUp") {
-      const newHead = car.head.value - BOARD_SIZE;
-      if (newHead >= 1) {
-        newCarCells.delete(car.tail.value);
-        const newHeadNode = new LinkedListNode(newHead);
-        newHeadNode.next = car.head;
-        setCar(new LinkedList(newHead));
-        newCarCells.add(newHead);
-        setCarCells(newCarCells);
-      }
-    }
-    // Move the car down
-    else if (event.key === "ArrowDown") {
-      const newHead = car.head.value + BOARD_SIZE;
-      if (newHead <= BOARD_SIZE * BOARD_SIZE) {
-        newCarCells.delete(car.tail.value);
-        const newHeadNode = new LinkedListNode(newHead);
-        newHeadNode.next = car.head;
-        setCar(new LinkedList(newHead));
-        newCarCells.add(newHead);
-        setCarCells(newCarCells);
-      }
-    }
-  } */
 
   const moveCar = () => {
     const newCarCells = new Set(carCells);
     const newHead = car.head.value + BOARD_SIZE;
 
-    if (newHead <= BOARD_SIZE * BOARD_SIZE) {
+    if (newHead <= BOARD_SIZE * 52) {
       newCarCells.delete(car.tail.value);
       const newHeadNode = new LinkedListNode(newHead);
       newHeadNode.next = car.head;

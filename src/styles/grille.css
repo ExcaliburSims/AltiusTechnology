@@ -5,13 +5,13 @@
 }
 
 .row {
-  height: 20px;
+  height: 15px;
 }
 
 .cell {
-  width: 20px;
-  height: 20px;
-  outline: 1px solid rgb(189, 147, 134);
+  width: 15px;
+  height: 15px;
+  outline: 1px solid rgb(255, 253, 253);
   display: inline-block;
 }
 
