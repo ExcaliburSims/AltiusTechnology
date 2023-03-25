@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw; /* à adapter en fonction de la taille de votre grille */
+}
+
+.board {
+  margin: auto; /* centrage horizontal */
+  background-color: #282c34;
+}

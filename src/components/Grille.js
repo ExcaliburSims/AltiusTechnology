@@ -32,12 +32,8 @@ const createBoard = (BOARD_SIZE) => {
 
 function GridPage() {
   const [board, setBoard] = useState(createBoard(BOARD_SIZE));
-  const [car, setCar] = useState(new LinkedList(44));
-  const [carCells, setCarCells] = useState(new Set([44]));
-  const [snake, setSnake] = useState({
-    cells: new LinkedList(44),
-    direction: "right",
-  });
+  const [car, setCar] = useState(new LinkedList(1));
+  const [carCells, setCarCells] = useState(new Set([1]));
 
   return (
     <div className="board">
