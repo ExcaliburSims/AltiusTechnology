@@ -1,5 +1,4 @@
 .board {
-  /* outline: 2px solid rgb(134, 154, 189); */
   background-color: azure;
   height: 100vh;
 }
@@ -14,18 +13,6 @@
   outline: 1px solid #fdfdfd;
   display: inline-block;
 }
-
-/* .cell-green {
-  background-color: green;
-}
-
-.cell-red {
-  background-color: red;
-}
-
-.cell-purple {
-  background-color: purple;
-} */
 .car-cell {
   background-color: rgb(23, 2, 253);
 }
